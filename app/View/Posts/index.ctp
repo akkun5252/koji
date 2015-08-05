@@ -20,12 +20,11 @@
 			<th><?php echo $this->Paginator->sort('display', '公開設定'); ?></th>
 		</tr>
 
-		<?php foreach($Postlist as $post): ?>
-
+		<?php foreach((array)$postList as $post): ?>
 		<tr>
-			<td><?php echo h($post['id']); ?></td>
-			<td><?php echo h($post['name']); ?></td>
-			<td><?php echo $dispaly[h($post['display'])]; ?></td>
+			<td><?php echo h($post['Post']['id']); ?></td>
+			<td><?php echo h($post['Post']['name']); ?></td>
+			<td><?php echo $dispaly[h($post['Post']['display'])]; ?></td>
 		</tr>
 
 		<?php endforeach; ?>

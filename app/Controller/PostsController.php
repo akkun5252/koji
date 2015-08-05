@@ -13,7 +13,7 @@ class PostsController extends AppController {
 		$this->Prg->commonProcess ();
 		$this->paginate ['conditions'] = $this->Post->parseCriteria ( $this->passedArgs );
 
-		$shopList = $this->paginate ();
-		$this->set ( compact ( 'shopList' ) );
+		$postList = $this->paginate ();
+		$this->set ( compact ( 'postList' ) );
 	}
 }
