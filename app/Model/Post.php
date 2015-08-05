@@ -1,7 +1,9 @@
 <?php
 class Post extends AppModel {
-	public $actsAs = array('Search.Searchable');
-	public $belongsTo = array('User');
-	public $filterArgs = array(array('name' => 'title', 'type' => 'like'),
-	);
-}
+    var $name = 'Post';
+    var $displayField = 'title';
+    var $actsAs = array('Search.Searchable');
+    var $filterArgs = array(
+                            array('name' => 'title', 'type' => 'like'),
+                            );
+  }
