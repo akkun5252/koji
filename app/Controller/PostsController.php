@@ -1,13 +1,19 @@
 <?php
 class PostsController extends AppController {
-    var $name = 'Posts';
-    var $components = array('Search.Prg');
-    var $presetVars = array(
-                            array('field' => 'title', 'type' => 'value'),
-                            );
-    function index() {
-        $this->Prg->commonProcess();
-        $this->paginate['conditions'] = $this->Post->parseCriteria($this->passedArgs);
-        $this->set('posts', $this->paginate());
-    }
+	public $components = array (
+			'Search.Prg'
+	);
+	public $presetVars = true;
+	public $paginate = array ();
+	public function index() {
+		$this->paginate = array (
+				'limit' => 2
+		);
+
+		$this->Prg->commonProcess ();
+		$this->paginate ['conditions'] = $this->Post->parseCriteria ( $this->passedArgs );
+
+		$shopList = $this->paginate ();
+		$this->set ( compact ( 'shopList' ) );
+	}
 }
