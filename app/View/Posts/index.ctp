@@ -39,4 +39,4 @@
 	<?php echo $this->Paginator->next(); ?>
 </div>
 
-<?php echo $this->Html->css('shop_index', null, array( 'inline' => false )); ?>
+<?php echo $this->Html->css('search_index', null, array( 'inline' => false )); ?>
