@@ -1,76 +1,85 @@
+<script type="text/javascript">
+plgFcRoot = '<?php echo $this->Html->url('/'); ?>' + "fullcalendar";
+</script>
+
 <?php
 echo $this->Html->css ( 'fullcalendar.css' );
-// echo $this->Html->css('jquery-ui.min.css');
+//echo $this->Html->css ( 'fullcalendar.print.css' );
 echo $this->Html->script ( 'jquery.min.js' );
-// echo $this->Html->script('jquery-ui.custom.min.js');
 echo $this->Html->script ( 'moment.min.js' );
-echo $this->Html->script ( 'fullcalendar.js' );
+echo $this->Html->script ( 'fullcalendar.min.js' );
 ?>
 
-<script type="text/javascript">
+<script>
 $(document).ready(function() {
-    $('#calendar').fullCalendar({
+	$('#calendar').fullCalendar({
+		header: {
+			left: 'prev,next today',
+			center: 'title',
+			right: 'month,agendaWeek,agendaDay'
+		},
+		editable: true,
+		eventLimit: true, // allow "more" link when too many events
+		events: {
+			url:"dirname(__FILE__) . '/php/get-events.php'",
+			error: function()
+				$('#script-warning').show();
+			}
+		},
+		loading: function(bool) {
+			$('#loading').toggle(bool);
+		}
+	});
 
-            // ヘッダーのタイトルとボタン
-        header: {
-            // title, prev, next, prevYear, nextYear, today
-            left: 'prev,next today',
-            center: 'title',
-            right: 'month agendaWeek agendaDay'
-        },
- events: [
-        {
-            title: 'ああい',
-            start: '2015-07-21 12:30:00',
-            end: '2015-07-29 18:30:00',
-            url: 'http://google.com/',
-            color: 'yellow',   // an option!
-            textColor: 'black' // an option!
-        },
-        {
-            title: 'ままま',
-            start: '2015-07-21 12:30:00'
-
-        },
-        {
-            title: 'おおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおお',
-            start: '2015-07-05'
-        },
-        {
-            title: 'kokoko',
-            start: '2015-07-16 10:00:00'
-
-        }
-    ],
-
-    color: 'yellow',   // an option!
-    textColor: 'black', // an option!
-
-	eventClick: function(event) {
-        if (event.url) {
-            window.open(event.url);
-            return false;
-        }
-	}
-
-    })
 });
+
+
 </script>
-<style type='text/css'>
+
+<style>
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
+	font-size: 14px;
+}
+
+#script-warning {
+	display: none;
+	background: #eee;
+	border-bottom: 1px solid #ddd;
+	padding: 0 10px;
+	line-height: 40px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 12px;
+	color: red;
+}
+
+#loading {
+	display: none;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
 #calendar {
-	width: 1200px;
-	margin: 0 auto;
+	max-width: 900px;
+	margin: 40px auto;
+	padding: 0 10px;
 }
 </style>
 
-<div id='calendar'></div>
-<div class="Calendar index">
-	<div id="calendar"></div>
-</div>
-<div class="actions">
-	<ul>
-		<li><?php echo $this->Html->link(__('New Event', true), array('plugin' => 'full_calendar', 'controller' => 'events', 'action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('Manage Events', true), array('plugin' => 'full_calendar', 'controller' => 'events')); ?></li>
-		<li><?php echo $this->Html->link(__('Manage Events Types', true), array('plugin' => 'full_calendar', 'controller' => 'event_types')); ?></li>
-	</ul>
-</div>
+<body>
+
+	<div id='script-warning'>
+		<code>get-events.php</code>
+		must be running.
+	</div>
+
+	<div id='loading'>loading...</div>
+
+	<div id='calendar'></div>
+
+</body>
+

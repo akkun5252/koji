@@ -1,14 +1,4 @@
 <?php
-/*
- * Controller/EventsController.php
- * CakePHP Full Calendar Plugin
- *
- * Copyright (c) 2010 Silas Montgomery
- * http://silasmontgomery.com
- *
- * Licensed under MIT
- * http://www.opensource.org/licenses/mit-license.php
- */
 class EventsController extends AppController {
 	var $name = 'Events';
 	var $paginate = array (
@@ -123,3 +113,4 @@ class EventsController extends AppController {
 	}
 }
 ?>
+

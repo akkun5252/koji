@@ -10,6 +10,7 @@
  * @link          http://cakephp.org CakePHP(tm) Project
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 use Cake\Core\Configure;
 use Cake\Datasource\ConnectionManager;
 use Cake\Event\EventManager;
@@ -18,21 +19,20 @@ use Cake\Routing\DispatcherFactory;
 use Cake\Routing\Router;
 use DebugKit\Routing\Filter\DebugBarFilter;
 
-$debugBar = new DebugBarFilter(EventManager::instance(), (array)Configure::read('DebugKit'));
+$debugBar = new DebugBarFilter ( EventManager::instance (), ( array ) Configure::read ( 'DebugKit' ) );
 
-if (!$debugBar->isEnabled() || php_sapi_name() === 'cli') {
-    return;
+if (! $debugBar->isEnabled () || php_sapi_name () === 'cli') {
+	return;
 }
 
-$hasDebugKitConfig = ConnectionManager::config('debug_kit');
-if (!$hasDebugKitConfig && !in_array('sqlite', PDO::getAvailableDrivers())) {
-    $msg = 'DebugKit not enabled. You need to either install pdo_sqlite, ' .
-        'or define the "debug_kit" connection name.';
-    Log::warning($msg);
-    return;
+$hasDebugKitConfig = ConnectionManager::config ( 'debug_kit' );
+if (! $hasDebugKitConfig && ! in_array ( 'sqlite', PDO::getAvailableDrivers () )) {
+	$msg = 'DebugKit not enabled. You need to either install pdo_sqlite, ' . 'or define the "debug_kit" connection name.';
+	Log::warning ( $msg );
+	return;
 }
 
-if (!$hasDebugKitConfig) {
+if (! $hasDebugKitConfig) {
     ConnectionManager::config('debug_kit', [
         'className' => 'Cake\Database\Connection',
         'driver' => 'Cake\Database\Driver\Sqlite',
@@ -43,8 +43,8 @@ if (!$hasDebugKitConfig) {
     ]);
 }
 
-Router::plugin('DebugKit', function ($routes) {
-    $routes->extensions('json');
+Router::plugin ( 'DebugKit', function ($routes) {
+	$routes->extensions ( 'json' );
     $routes->connect(
         '/toolbar/clear_cache',
         ['controller' => 'Toolbar', 'action' => 'clearCache']
@@ -61,9 +61,8 @@ Router::plugin('DebugKit', function ($routes) {
         '/panels/*',
         ['controller' => 'Panels', 'action' => 'index']
     );
-});
-
+} );
 
 // Setup toolbar
-$debugBar->setup();
-DispatcherFactory::add($debugBar);
+$debugBar->setup ();
+DispatcherFactory::add ( $debugBar );
