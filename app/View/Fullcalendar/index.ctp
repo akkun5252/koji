@@ -1,41 +1,3 @@
-<script type="text/javascript">
-plgFcRoot = '<?php echo $this->Html->url('/'); ?>' + "fullcalendar";
-</script>
-
-<?php
-echo $this->Html->css ( 'fullcalendar.css' );
-//echo $this->Html->css ( 'fullcalendar.print.css' );
-echo $this->Html->script ( 'jquery.min.js' );
-echo $this->Html->script ( 'moment.min.js' );
-echo $this->Html->script ( 'fullcalendar.min.js' );
-?>
-
-<script>
-$(document).ready(function() {
-	$('#calendar').fullCalendar({
-		header: {
-			left: 'prev,next today',
-			center: 'title',
-			right: 'month,agendaWeek,agendaDay'
-		},
-		editable: true,
-		eventLimit: true, // allow "more" link when too many events
-		events: {
-			url:"dirname(__FILE__) . '/php/get-events.php'",
-			error: function()
-				$('#script-warning').show();
-			}
-		},
-		loading: function(bool) {
-			$('#loading').toggle(bool);
-		}
-	});
-
-});
-
-
-</script>
-
 <style>
 body {
 	margin: 0;
@@ -69,17 +31,41 @@ body {
 	padding: 0 10px;
 }
 </style>
-
+</head>
 <body>
-
 	<div id='script-warning'>
-		<code>get-events.php</code>
+		<code>php/get-events.php</code>
 		must be running.
 	</div>
 
 	<div id='loading'>loading...</div>
 
 	<div id='calendar'></div>
+	<script type="text/javascript">
+plgFcRoot = '<?php echo $this->Html->url('/'); ?>' + "fullcalendar";
+</script>
 
+<?php
+echo $this->Html->css ( 'fullcalendar.css' );
+// echo $this->Html->css ( 'fullcalendar.print.css' );
+echo $this->Html->script ( 'jquery.min.js' );
+echo $this->Html->script ( 'moment.min.js' );
+echo $this->Html->script ( 'fullcalendar.min.js' );
+?>
+
+<script>
+$(document).ready(function() {
+	$('#calendar').fullCalendar({
+		header: {
+			left: 'prev,next today',
+			center: 'title',
+			right: 'month,agendaWeek,agendaDay'
+		},
+		editable: false,
+		eventLimit:true,
+		events: "/events/feed"
+	});
+
+});
+</script>
 </body>
-
