@@ -2,7 +2,7 @@
 <table class="table">
 
 <?php
-     echo $this->Html->link($event['Event']['TASKNAME'],'/events/view/'.$event['Event']['id']);
+     echo $this->Html->link($event['Event']['TASKNAME'],'/events/view/'.$event['Event']['TASKID']);
 ?>
 
         <?php foreach($Event as $event): ?>

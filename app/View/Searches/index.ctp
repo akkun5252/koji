@@ -31,8 +31,9 @@
 				<td><?php echo h($search['Search']['CONDITION']); ?></td>
 			</tr>
         <?php endforeach; ?>
-        </table>
-        <?php echo $this->Paginator->prev(); ?>&nbsp;
+
+    </table>
+    <?php echo $this->Paginator->prev(); ?>&nbsp;
 	<?php echo $this->Paginator->numbers(); ?>&nbsp;
 	<?php echo $this->Paginator->next(); ?>
     </div>
@@ -41,8 +42,27 @@
         <?php echo $this->Form->create('Search', array('action'=>'index')); ?>
         <fieldset>
 				<legend>検索</legend>
-    <?php echo $this->Form->input('TASKNAME', array('label' => 'タイトル', 'class' => 'span12', 'placeholder' => 'タイトルを対象に検索')); ?>
+    <?php echo $this->Form->input('TASKNAME', array('label' => 'タスク名', 'class' => 'span12', 'placeholder' => 'タスク名を対象に検索')); ?>
 			</fieldset>
+
+<?php echo $this->Html->script ('jquery.min.js', array ('inline' => false) );?>
+<?php echo$this->Html->script ('jquery-ui-1.9.2.custom.js', array ('inline' => false) );?>
+<?php echo $this->Html->script ('jquery.ui.datepicker-ja.js', array ('inline' => false) );?>
+<?php echo$this->Html->css ('jquery-ui-1.9.2.custom.min.css', null, array ('inline' => false) );?>
+<?php $this->Html->scriptStart ( array ('inline' => false) );
+echo <<< END
+$(document).ready( function() {
+    $("#FROM").datepicker();
+	$("#TO").datepicker();
+});
+END;
+
+$this->Html->scriptEnd ();
+
+echo "<div>開始日時: <input type='text' id='FROM' /></div>";
+echo "<div>終了日時: <input type='text' id='TO' /></div>";
+?>
+
         <?php echo $this->Form->end('検索'); ?>
         </div>
 	</div>
