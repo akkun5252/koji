@@ -15,10 +15,11 @@
 				<th><?php echo $this->Paginator->sort('STARTDATE', '送信開始日時');?></th>
 				<th><?php echo $this->Paginator->sort('ENDDATE', '送信終了日時');?></th>
 				<th><?php echo $this->Paginator->sort('CONDITION', '配信条件');?></th>
+				<th><?php echo $this->Paginator->sort('EDITDATE', '更新日時');?></th>
 			</tr>
         <?php foreach ((array)$searches as $search): ?>
             <tr>
-				<td><?php echo $this->Html->link($search['Search']['TASKID'], array('action' => 'view', $search['Search']['TASKID'])); ?></td>
+				<td><?php echo $this->Html->link($search['Search']['TASKID'], array('controller' => 'Events','action' => 'index', $search['Search']['TASKID'])); ?></td>
 				<td><?php echo h($search['Search']['TASKNAME']); ?></td>
 				<td><?php echo h($search['Search']['STATUS']); ?></td>
 				<td><?php echo h($search['Search']['SENDNUM']); ?></td>
@@ -29,6 +30,7 @@
 				<td><?php echo h($search['Search']['STARTDATE']); ?></td>
 				<td><?php echo h($search['Search']['ENDDATE']); ?></td>
 				<td><?php echo h($search['Search']['CONDITION']); ?></td>
+				<td><?php echo h($search['Search']['EDITDATE']); ?></td>
 			</tr>
         <?php endforeach; ?>
 

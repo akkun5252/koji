@@ -19,7 +19,7 @@ $(document).ready(function() {
 				right: 'month,agendaWeek,agendaDay'
 			},
 			editable: true,
-			events: "<?php echo $this->webroot;?>fcfeed/",
+			events: "<?php echo $this->webroot;?>feed/",
 		});
 
 	});

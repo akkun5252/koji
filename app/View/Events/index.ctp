@@ -1,9 +1,6 @@
+
 <h2>詳細</h2>
 <table class="table">
-
-<?php
-     echo $this->Html->link($event['Event']['TASKNAME'],'/events/view/'.$event['Event']['TASKID']);
-?>
 
         <?php foreach($Event as $event): ?>
 	<tr>

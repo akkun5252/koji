@@ -1,5 +1,6 @@
 <?php
 class Search extends AppModel {
+	public $useTable = 'events';
 	public $order = array (
 			'Search.TASKID DESC'
 	);

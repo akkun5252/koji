@@ -2,7 +2,7 @@
 class FullcalendarController extends AppController {
 	function index() {
 	}
-	function fcfeed(){
+	function feed(){
 		// start/endをSQL用に編集
 		$mysqlstart = date( 'Y-m-d H:i:s', $this->params['url']['STARTDATE']);
 		$mysqlend   = date( 'Y-m-d H:i:s', $this->params['url']['ENDDATE']);
