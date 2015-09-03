@@ -29,8 +29,19 @@ App::uses ( 'Controller', 'Controller' );
  * @package app.Controller
  * @link http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
-	class AppController extends Controller {
-		var $components = array ('Session');
-		var $helpers = array ('Html','Form','Session','Js' => array ('Jquery'));
-	}
+class AppController extends Controller {
+	public $components = array (
+			'Session'
+	);
+	public $helpers = array (
+			'Html',
+			'Form',
+			'Session',
+			'Paginator'=> array('className' => 'TwitterBootstrap.BootstrapPaginator'),
+			'Js' => array (
+					'Jquery'
+			)
+	);
+	public $layout ='bootstrap';
+}
 ?>

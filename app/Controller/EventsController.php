@@ -10,10 +10,6 @@
  * http://www.opensource.org/licenses/mit-license.php
  */
 class EventsController extends AppController {
-	public $helpers = array (
-			'Html',
-			'Form'
-	);
 	public function index($pass1 = null) {
 		// $this->set ( 'Event', $this->Event->find ( 'all' ) );
 		$this->set ( 'Event', $this->Event->find ( 'all', array (

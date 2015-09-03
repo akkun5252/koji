@@ -15,12 +15,5 @@ class SearchesController extends AppController {
 		$searches = $this->paginate ();
 		$this->set ( compact ( 'searches' ) );
 	}
-	public function view() {
-
-
-
-		//$this->Search->TASKID = $TASKID;
-		//$this->set ( 'Search', $this->Search->read () );
-	}
 }
 ?>

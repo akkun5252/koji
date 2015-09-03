@@ -1,9 +1,5 @@
-<script type="text/javascript">
-plgFcRoot = '<?php echo $this->Html->url('/'); ?>' + "full_calendar";
-</script>
-
 <?php
-echo $this->Html->css ( 'fullcalendar.css' );
+echo $this->Html->css ( 'fullcalendar.min.css' );
 echo $this->Html->script ( 'jquery.min.js' );
 echo $this->Html->script ( 'moment.min.js' );
 echo $this->Html->script ( 'fullcalendar.min.js' );
