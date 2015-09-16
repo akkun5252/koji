@@ -2,10 +2,16 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="well" style="margin-top: 20px;">
-					</fieldset>
     <?php echo $this->Form->create('Search', array('action'=>'index')); ?>
     <?php echo $this->Form->input('TASKNAME', array('label' => 'タスク名', 'class' => 'span12', 'placeholder' => 'タスク名を対象に検索')); ?>
-	
+	<?php echo $this->Form->create('Search', array('action'=>'index')); ?>
+    <?php echo $this->Form->input('SUBJECT', array('label' => '件名', 'class' => 'span12', 'placeholder' => '件名を対象に検索')); ?>
+	<?php echo $this->Form->create('Search', array('action'=>'index')); ?>
+    <?php echo $this->Form->input('MAIL_TXT', array('label' => 'メール本文', 'class' => 'span12', 'placeholder' => 'メール本文を対象に検索')); ?>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<?php echo $this->Html->script('bootstrap'); ?>
 	<?php echo$this->Html->script ('jquery-ui-1.9.2.custom.js', array ('inline' => false) );?>
 	<?php echo $this->Html->script ('jquery.ui.datepicker-ja.js', array ('inline' => false) );?>
 	<?php echo$this->Html->css ('jquery-ui-1.9.2.custom.min.css', null, array ('inline' => false) );?>
@@ -29,9 +35,6 @@ echo "<div>終了日時: <input type='text' id='TO' /></div>";
 
         <?php echo $this->Form->end('検索'); ?>
         </div>
-		</div>
-	</div>
-
 	<table class="table table-hover table-condensed table-striped">
 		<thead>
 			<tr>
@@ -39,7 +42,7 @@ echo "<div>終了日時: <input type='text' id='TO' /></div>";
 				<th><?php echo $this->Paginator->sort('TASKNAME', 'タスク名');?></th>
 				<th><?php echo $this->Paginator->sort('STATUS', 'ステータス');?></th>
 				<th><?php echo $this->Paginator->sort('SENDNUM', '配信件数');?></th>
-				<th><?php echo $this->Paginator->sort('FROM_NAME', '送信者名');?></th>
+				<th><?php echo $this->Paginator->sort('SUBJECT', '件名');?></th>
 				<th><?php echo $this->Paginator->sort('STARTDATE', '送信開始日時');?></th>
 				<th><?php echo $this->Paginator->sort('ENDDATE', '送信終了日時');?></th>
 			</tr>
@@ -49,20 +52,20 @@ echo "<div>終了日時: <input type='text' id='TO' /></div>";
             <tr>
 				<td><?php echo $this->Html->link($search['Search']['TASKID'], array('controller' => 'Events','action' => 'index', $search['Search']['TASKID'])); ?></td>
 				<td><?php echo h($search['Search']['TASKNAME']); ?></td>
-				<td><?php echo h($search['Search']['STATUS']); ?></td>
+				<td><?php echo '配信完了' ?></td>
 				<td><?php echo h(number_format($search['Search']['SENDNUM'])); ?></td>
-				<td><?php echo h($search['Search']['FROM_NAME']); ?></td>
-				<td><?php echo date("Y-m-d H:i",strtotime($search['Search']['STARTDATE'])); ?></td>
-				<td><?php echo date("Y-m-d H:i",strtotime($search['Search']['ENDDATE'])); ?></td>
+				<td><?php echo h($search['Search']['SUBJECT']); ?></td>
+				<td><?php echo date("Y/m/d H:i",strtotime($search['Search']['STARTDATE'])); ?></td>
+				<td><?php echo date("Y/m/d H:i",strtotime($search['Search']['ENDDATE'])); ?></td>
 			</tr>
         <?php endforeach; ?>
 			</tbody>
 	</table>
-</div>
-<div class="pagination">
-	<ul>
-    <?php echo $this->Paginator->prev(__('prev'), array('tag' => 'li'), null, array('tag' => 'li','class' => 'disabled','disabledTag' => 'a')); ?>
-    <?php echo $this->Paginator->numbers(array('separator' => '','currentTag' => 'a', 'currentClass' => 'active','tag' => 'li','first' => 1, 'ellipsis' => '<li class="disabled"><a>...</a></li>')); ?>
-    <?php echo $this->Paginator->next(__('next'), array('tag' => 'li','currentClass' => 'disabled'), null, array('tag' => 'li','class' => 'disabled','disabledTag' => 'a')); ?>
-  </ul>
+<ul class="pagination">
+<?php
+  echo $this->Paginator->prev('&laquo;', array('tag' => 'li', 'escape' => false), '<a href="#">&laquo;</a>', array('class' => 'prev disabled', 'tag' => 'li', 'escape' => false));
+  echo $this->Paginator->numbers(array('separator' => '', 'tag' => 'li', 'currentLink' => true, 'currentClass' => 'active', 'currentTag' => 'a'));
+  echo $this->Paginator->next('&raquo;', array('tag' => 'li', 'escape' => false), '<a href="#">&raquo;</a>', array('class' => 'prev disabled', 'tag' => 'li', 'escape' => false));
+?>
+</ul>
 </div>

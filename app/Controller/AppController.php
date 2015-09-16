@@ -37,7 +37,6 @@ class AppController extends Controller {
 			'Html',
 			'Form',
 			'Session',
-			'Paginator'=> array('className' => 'TwitterBootstrap.BootstrapPaginator'),
 			'Js' => array (
 					'Jquery'
 			)

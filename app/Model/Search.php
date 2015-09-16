@@ -14,6 +14,12 @@ class Search extends AppModel {
 			'TASKNAME' => array (
 					'type' => 'like'
 			),
+			'SUBJECT' => array (
+					'type' => 'like'
+			),
+			'MAIL_TXT' => array (
+					'type' => 'like'
+			),
 			'FROM' => array (
 					'type' => 'value',
 					'field' => 'Search.STARTDATE >='

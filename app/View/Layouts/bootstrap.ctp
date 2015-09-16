@@ -31,10 +31,7 @@ body {
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/ico/apple-touch-icon-72-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" href="/ico/apple-touch-icon-57-precomposed.png">
 	-->
-	<?php
-	echo $this->fetch ( 'meta' );
-	echo $this->fetch ( 'css' );
-	?>
+
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -49,12 +46,11 @@ body {
 				</button>
 				<a class="navbar-brand" href="#">
 					WEBCASカレンダー </a>
-
 			</div>
 			<div class="collapse navbar-collapse" id=".nav-collapse">
 				<ul class="nav navbar-nav">
 					<li><?php echo $this->Html->link('一覧', array(
-							'controller' => 'Fullcalendar',
+							'controller' => 'Fullcalendars',
 							'action' => 'index',
 						)); ?></li>
 					<li><?php echo $this->Html->link('検索', array(
@@ -68,14 +64,6 @@ body {
 		<?php echo $this->Session->flash(); ?>
 		<?php echo $this->fetch('content'); ?>
 	</div>
-	<!-- /container -->
 
-	<!-- Le javascript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-	<?php echo $this->Html->script('bootstrap'); ?>
-	<?php echo $this->fetch('script'); ?>
 </body>
 </html>
