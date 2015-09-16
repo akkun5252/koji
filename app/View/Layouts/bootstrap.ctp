@@ -45,7 +45,7 @@ body {
 					 <span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="#">
-					WEBCASカレンダー </a>
+				WEBCASカレンダー</a>
 			</div>
 			<div class="collapse navbar-collapse" id=".nav-collapse">
 				<ul class="nav navbar-nav">
@@ -59,6 +59,7 @@ body {
 						)); ?></li>
 					</ul>
 			</div>
+		</div>
 			<!--/.nav-collapse -->
 	</nav>
 		<?php echo $this->Session->flash(); ?>

@@ -3,26 +3,19 @@ class PostsController extends AppController {
 public $uses = "Event";
 	function index() {
 		$this->layout = '';
-		$mysqlstart = date ( 'Y-m-d H:i:s', strtotime($this->params ['url'] ['start']) );
-		$mysqlend = date ( 'Y-m-d H:i:s', strtotime($this->params ['url'] ['end'] ));
- 		//$mysqlstart = date ( 'Y-m-d H:i:s', $this->params ['url'] ['start'] );
-		//$mysqlend = date ( 'Y-m-d H:i:s', $this->params ['url'] ['end'] );
-		//print_r ( $mysqlstart );
-		//print_r ( $mysqlend );
+		$psqlstart = date ( 'Y-m-d H:i:s', strtotime($this->params ['url'] ['start']) );
+		$psqlend = date ( 'Y-m-d H:i:s', strtotime($this->params ['url'] ['end'] ));
 		$conditions = array (
 				'Event.STARTDATE BETWEEN ? AND ?' => array (
-						$mysqlstart,
-						$mysqlend
+						$psqlstart,
+						$psqlend
 				)
 		);
 		$events = $this->Event->find ( 'all', array (
 				'conditions' => $conditions
 		) );
-		//print_r ( $events );
-
 		$rows = array ();
 		for($a = 0; count ( $events ) > $a; $a ++) {
-
 			$rows [] = array (
 					'id' => $events [$a] ['Event'] ['TASKID'],
 					'title' => $events [$a] ['Event'] ['TASKNAME'],
@@ -30,12 +23,7 @@ public $uses = "Event";
 					'end' => date ( 'Y-m-d H:i', strtotime ( $events [$a] ['Event'] ['ENDDATE'] ) )
 			);
 		}
-		//print_r ( $rows );
 		echo json_encode($rows);
-
-		//print_r ( $json );
-		//echo( $rows );
-/* 		$this->set ( 'json', json_encode ( $rows ) ); */
 	}
 }
 ?>
