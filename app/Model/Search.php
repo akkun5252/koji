@@ -26,7 +26,7 @@ class Search extends AppModel {
 			),
 			'TO' => array (
 					'type' => 'value',
-					'field' => 'Search.STARTDATE >='
+					'field' => 'Search.STARTDATE <='
 			),
 	)
 	;

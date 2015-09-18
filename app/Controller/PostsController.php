@@ -19,6 +19,8 @@ public $uses = "Event";
 			$rows [] = array (
 					'id' => $events [$a] ['Event'] ['TASKID'],
 					'title' => $events [$a] ['Event'] ['TASKNAME'],
+					'hoge'=> $events [$a] ['Event'] ['STATUS'],
+					'hoge2'=> number_format($events [$a] ['Event'] ['SENDNUM']),
 					'start' => date ( 'Y-m-d H:i', strtotime ( $events [$a] ['Event'] ['STARTDATE'] ) ),
 					'end' => date ( 'Y-m-d H:i', strtotime ( $events [$a] ['Event'] ['ENDDATE'] ) )
 			);

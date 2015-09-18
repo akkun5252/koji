@@ -2,17 +2,18 @@
 	<?php echo $this->Html->script('bootstrap'); ?>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col-md-5">
         <?php foreach($Event as $event): ?>
         <br>
 				<br>
 				<br>
+				<p class="text-right">更新日時：
+				<?php echo date("Y/m/d H:i",strtotime($event['Event']['EDITDATE'])); ?>
+				</p>
 
 				<table class="table table-bordered table-condensed ">
-				<tr>
-					<th class="col-md-3 warning">基本情報</th>
-					<td class="text-left warning"></td>
-				</tr
+				<th class="warning" colspan="2">基本情報</th>
+
 				<tr>
 					<th class="col-md-2 info">タスクID</th>
 					<td class="text-left info"><?php echo h($event['Event']['TASKID']); ?></td>
@@ -43,10 +44,7 @@
 				</tr>
 				</table>
 				<table class="table table-bordered table-condensed ">
-				<tr>
-					<th class="col-md-3 warning">メール情報</th>
-					<td class="text-left warning"></td>
-				</tr
+				<th class="warning" colspan="2">メール情報</th>
 				<tr>
 					<th class="info">送信者名</th>
 					<td class="text-left info"><?php echo h($event['Event']['FROM_NAME']); ?></td>
@@ -63,16 +61,14 @@
 					<th class="info">件名</th>
 					<td class="text-left info"><?php echo h($event['Event']['SUBJECT']); ?></td>
 				</tr>
-				<tr>
-					<th class="info">更新日時</th>
-					<td class="text-left info"><?php echo date("Y/m/d H:i",strtotime($event['Event']['EDITDATE'])); ?></td>
-				</tr>
         <?php endforeach; ?>
 		</table>
 		</div>
-</div>
 
-		<div class="col-md-6">
+		<div class="col-md-7">
+		   <br>
+				<br>
+				<br>
 		<ul class="nav nav-tabs nav-justified">
 			<li class="active"><a href="#tab1" data-toggle="tab">テキストメール</a></li>
 			<li><a href="#tab2" data-toggle="tab">HTMLメール</a></li>
@@ -102,4 +98,5 @@
 			</div>
 		</div>
 	</div>
+</div>
 </div>

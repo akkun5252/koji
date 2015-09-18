@@ -1,40 +1,63 @@
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-12">
-			<div class="well" style="margin-top: 20px;">
-    <?php echo $this->Form->create('Search', array('action'=>'index')); ?>
-    <?php echo $this->Form->input('TASKNAME', array('label' => 'タスク名', 'class' => 'span12', 'placeholder' => 'タスク名を対象に検索')); ?>
-	<?php echo $this->Form->create('Search', array('action'=>'index')); ?>
-    <?php echo $this->Form->input('SUBJECT', array('label' => '件名', 'class' => 'span12', 'placeholder' => '件名を対象に検索')); ?>
-	<?php echo $this->Form->create('Search', array('action'=>'index')); ?>
-    <?php echo $this->Form->input('MAIL_TXT', array('label' => 'メール本文', 'class' => 'span12', 'placeholder' => 'メール本文を対象に検索')); ?>
-
-
+		<div class="col-md-6">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<?php echo $this->Html->script('bootstrap'); ?>
-	<?php echo$this->Html->script ('jquery-ui-1.9.2.custom.js', array ('inline' => false) );?>
-	<?php echo $this->Html->script ('jquery.ui.datepicker-ja.js', array ('inline' => false) );?>
-	<?php echo$this->Html->css ('jquery-ui-1.9.2.custom.min.css', null, array ('inline' => false) );?>
-	<?php
 
-$this->Html->scriptStart ( array (
-		'inline' => false
-) );
-echo <<< END
-$(document).ready( function() {
-    $("#FROM").datepicker();
-	$("#TO").datepicker();
-});
-END;
+	<?php echo $this->Html->css('bootstrap-datepicker3.min.css'); ?>
+	<?php echo $this->Html->script('bootstrap-datepicker.min.js'); ?>
+	<?php echo $this->Html->script('bootstrap-datepicker.ja.min.js'); ?>
 
-$this->Html->scriptEnd ();
+	<?php echo $this->Form->create('Search', array('action'=>'index')); ?>
+	<table class="table table-hover table-condensed">
+	<tr>
+	<th class="text-right col-md-3">タスク名：</th>
+    <td><?php echo $this->Form->input('TASKNAME', array('label' => false, 'class' => 'col-md-6', 'placeholder' =>'タスク名を対象に検索')); ?></td>
+	</tr>
+	<tr>
+	<th class="text-right col-md-3">件名：</th>
+    <td><?php echo $this->Form->input('SUBJECT', array('label' => false, 'class' => 'col-md-6', 'placeholder' =>'件名を対象に検索')); ?></td>
+	</tr>
+	<tr>
+	<th class="text-right col-md-3">メール本文：</th>
+   	<td><?php echo $this->Form->input('MAIL_TXT', array('label' => false, 'class' => 'span6', 'placeholder' =>'メール本文を対象に検索')); ?></td>
+	</tr>
+	<tr>
+	<th class="text-right col-md-3">期間：</th>
+	<td>
+	<div id="dateArea">
+        <?php echo $this->Form->text('FROM', array('class' => 'col-md-3')); ?>
+        <?php echo $this->Form->text('TO', array('class' => 'col-md-3')); ?>
 
-echo "<div>開始日時: <input type='text' id='FROM' /></div>";
-echo "<div>終了日時: <input type='text' id='TO' /></div>";
-?>
+        <script type="text/javascript">
+			$(function(){
+   		 // オプション
+    	var options = {
+        language : "ja", // 日本語のフォーマットを指定
+        clearBtn : true,  // 日付のクリアボタンを表示
+        todayHighlight: true
+   		 }
 
-        <?php echo $this->Form->end('検索'); ?>
-        </div>
+    	// datepickerを使用する要素を指定
+   	 $("#dateArea input").datepicker(options);
+
+		});
+		</script>
+    </div>
+    </td>
+    </tr>
+    <tr>
+    <th class="text-right col-md-3"></th>
+    <td>
+    <?php echo $this->Form->button('リセット', array('type'=>'reset','class' => 'col-md-3')); ?>
+    <?php echo $this->Form->end('　　検索　　',array('class' => 'col-md-3')); ?>
+    </td>
+	</tr>
+</table>
+
+
+</div>
+        <div class="col-md-12">
 	<table class="table table-hover table-condensed table-striped">
 		<thead>
 			<tr>
@@ -68,4 +91,5 @@ echo "<div>終了日時: <input type='text' id='TO' /></div>";
   echo $this->Paginator->next('&raquo;', array('tag' => 'li', 'escape' => false), '<a href="#">&raquo;</a>', array('class' => 'prev disabled', 'tag' => 'li', 'escape' => false));
 ?>
 </ul>
+</div>
 </div>

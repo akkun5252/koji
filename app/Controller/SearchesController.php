@@ -8,7 +8,7 @@ class SearchesController extends AppController {
 	public function index() {
 		$this->Search->recursive = 0;
 		$this->paginate = array (
-				'limit' => 3
+				'limit' => 20
 		);
 		$this->Prg->commonProcess ();
 		$this->paginate ['conditions'] = $this->Search->parseCriteria ( $this->passedArgs );
