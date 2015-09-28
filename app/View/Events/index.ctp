@@ -4,13 +4,9 @@
 	<div class="row">
 		<div class="col-md-5">
         <?php foreach($Event as $event): ?>
-        <br>
-				<br>
-				<br>
 				<p class="text-right">更新日時：
 				<?php echo date("Y/m/d H:i",strtotime($event['Event']['EDITDATE'])); ?>
 				</p>
-
 				<table class="table table-bordered table-condensed ">
 				<th class="warning" colspan="2">基本情報</th>
 
@@ -64,11 +60,7 @@
         <?php endforeach; ?>
 		</table>
 		</div>
-
 		<div class="col-md-7">
-		   <br>
-				<br>
-				<br>
 		<ul class="nav nav-tabs nav-justified">
 			<li class="active"><a href="#tab1" data-toggle="tab">テキストメール</a></li>
 			<li><a href="#tab2" data-toggle="tab">HTMLメール</a></li>

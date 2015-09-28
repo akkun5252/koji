@@ -60,19 +60,19 @@ $(document).ready(function() {
         // カレンダーの縦横比(比率が大きくなると高さが縮む)
         aspectRatio: 1.35,
 		events: "posts/index",
-/* 		eventClick: function(calEvent, jsEvent, view) {
+		eventClick: function(calEvent, jsEvent, view) {
 	        window.location = "./Events/index/" + calEvent.id;
-	    }, */
+	    },
 /* 	    eventMouseover:function(calEvent, jsEvent, view) {
 	    	alert('配信条件: ' + calEvent.hoge);
 	    	alert('配信件数: ' + calEvent.hoge2);
 	    }, */
-	    eventClick:  function(event, jsEvent, view) {
+	    /* eventClick:  function(event, jsEvent, view) {
 	        //set the values and open the modal
 	        $("#eventInfo").html(event.id);
 	        $("#eventLink").attr('href', event.url);
 	        $("#eventContent").dialog({ modal: true, title: event.title });
-	    }
+	    } */
 
 	})
 });
